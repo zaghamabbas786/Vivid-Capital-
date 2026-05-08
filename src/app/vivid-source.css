@@ -22,7 +22,7 @@
   --accent-ink: oklch(42% 0.12 240);
   --accent-wash: oklch(94% 0.030 240);
 
-  /* type — stacks match bundled export; leading var() wires next/font-loaded faces */
+  /* type */
   --sans: var(--font-inter-tight), "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --serif: var(--font-source-serif), "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
   --mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -326,11 +326,7 @@ a { color: inherit; text-decoration: none; }
   line-height: 0.94;
   letter-spacing: -0.025em;
 }
-.hero-title em {
-  font-style: italic;
-  color: var(--accent-ink);
-  font-weight: 300;
-}
+.hero-title em { font-style: italic; color: var(--accent-ink); font-weight: 300; }
 .hero-meta {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -870,25 +866,3 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-3);
 }
 .scroll-hint::before { content: ""; width: 24px; height: 1px; background: var(--ink-3); }
-
-button.strat-row,
-button.insight {
-  appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  background: none;
-  font: inherit;
-  color: inherit;
-  margin: 0;
-  width: 100%;
-}
-
-button.scroll-hint {
-  appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  background: none;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-}

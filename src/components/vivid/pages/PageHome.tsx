@@ -146,12 +146,14 @@ export function PageHome() {
                 markets: ["Gold", "Futures", "Momentum", "Breakout"],
               },
             ].map((s, i) => (
-              <button
-                type="button"
+              <div
                 key={s.idx}
-                className="strat-row reveal text-left"
+                className="strat-row reveal"
                 style={{ transitionDelay: `${i * 60}ms` }}
-                onClick={() => navigate("strategy")}
+                onClick={() => { navigate("strategy"); }}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate("strategy"); }}
               >
                 <div className="idx">{s.idx}</div>
                 <div>
@@ -168,7 +170,7 @@ export function PageHome() {
                 <div className="arrow">
                   Detail <span className="arr">→</span>
                 </div>
-              </button>
+              </div>
             ))}
           </div>
         </div>
@@ -213,18 +215,27 @@ export function PageHome() {
               <span className="num-prefix">04 ——</span>
               <span className="lbl">Latest Insights</span>
             </span>
-            <button type="button" onClick={() => navigate("insights")} className="scroll-hint">
+            <a
+              onClick={() => { navigate("insights"); }}
+              className="scroll-hint"
+              style={{ cursor: "pointer" }}
+              role="link"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate("insights"); }}
+            >
               All insights →
-            </button>
+            </a>
           </div>
           <div className="insight-grid">
             {INSIGHTS.slice(0, 3).map((it, i) => (
-              <button
-                type="button"
+              <div
                 key={it.id}
-                className="insight reveal text-left"
+                className="insight reveal"
                 style={{ transitionDelay: `${i * 80}ms` }}
-                onClick={() => navigate("insights")}
+                onClick={() => { navigate("insights"); }}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate("insights"); }}
               >
                 <div className="meta">
                   <span className="tag">{it.kind}</span>
@@ -238,7 +249,7 @@ export function PageHome() {
                     Read <span className="arr">→</span>
                   </span>
                 </div>
-              </button>
+              </div>
             ))}
           </div>
         </div>

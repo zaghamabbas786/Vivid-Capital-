@@ -5,15 +5,17 @@ import { SiteShell } from "@/components/vivid/SiteShell";
 
 import "./globals.css";
 
+// Weights/styles match the @font-face set bundled inside the standalone HTML
+// (Inter Tight 300/400/500/600 normal; Source Serif 4 300/400/500 normal +
+// 300/400 italic; JetBrains Mono 400/500 normal). Loading exactly those keeps
+// the rendering byte-faithful to the export — no faux weights, no extras.
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
   subsets: ["latin"],
   display: "swap",
-  // Match standalone HTML: UI sans uses 300–600; variable avoids faux weights.
-  weight: "variable",
+  weight: ["300", "400", "500", "600"],
 });
 
-// Bundled export embeds Source Serif 4 normal 300–500 + italic 300/400.
 const sourceSerif = Source_Serif_4({
   variable: "--font-source-serif",
   subsets: ["latin"],
@@ -27,7 +29,7 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
-  weight: "variable",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
