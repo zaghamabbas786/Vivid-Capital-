@@ -3,10 +3,14 @@
 import { INSIGHTS } from "@/lib/site-data";
 
 import { useSiteNavigate } from "@/components/vivid/navigation-context";
-import { Ticker } from "@/components/vivid/primitives";
+import { Ticker, type TickerItem } from "@/components/vivid/primitives";
 import { useReveal } from "@/components/vivid/useReveal";
 
-export function PageHome() {
+interface PageHomeProps {
+  tickerItems?: readonly TickerItem[];
+}
+
+export function PageHome({ tickerItems }: PageHomeProps = {}) {
   useReveal();
   const navigate = useSiteNavigate();
 
@@ -54,7 +58,7 @@ export function PageHome() {
         </div>
       </section>
 
-      <Ticker />
+      <Ticker items={tickerItems} />
 
       <section className="section tight nb">
         <div className="container">

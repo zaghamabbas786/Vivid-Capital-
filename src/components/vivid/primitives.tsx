@@ -89,23 +89,31 @@ export function BrandLockup({ size = 20, onDark = false, compact = false }: Bran
   );
 }
 
-export function Ticker() {
-  const items: readonly [string, string, string, "up" | "down"][] = [
-    ["DXY", "104.28", "+0.14%", "up"],
-    ["EUR/USD", "1.0742", "−0.22%", "down"],
-    ["USD/JPY", "154.11", "+0.38%", "up"],
-    ["GBP/USD", "1.2564", "+0.09%", "up"],
-    ["BRENT", "82.40", "−0.91%", "down"],
-    ["GOLD", "2,318", "+0.44%", "up"],
-    ["COPPER", "4.212", "−0.18%", "down"],
-    ["SPX", "5,148", "+0.27%", "up"],
-    ["NKY", "39,812", "+1.02%", "up"],
-    ["BTC", "68,412", "+2.14%", "up"],
-    ["ETH", "3,824", "+1.68%", "up"],
-    ["US10Y", "4.284", "+2.1bp", "up"],
-    ["BUND10Y", "2.412", "−0.4bp", "down"],
-  ];
-  const track = [...items, ...items];
+export type TickerItem = readonly [string, string, string, "up" | "down"];
+
+const TICKER_FALLBACK: readonly TickerItem[] = [
+  ["DXY", "104.28", "+0.14%", "up"],
+  ["EUR/USD", "1.0742", "−0.22%", "down"],
+  ["USD/JPY", "154.11", "+0.38%", "up"],
+  ["GBP/USD", "1.2564", "+0.09%", "up"],
+  ["BRENT", "82.40", "−0.91%", "down"],
+  ["GOLD", "2,318", "+0.44%", "up"],
+  ["COPPER", "4.212", "−0.18%", "down"],
+  ["SPX", "5,148", "+0.27%", "up"],
+  ["NKY", "39,812", "+1.02%", "up"],
+  ["BTC", "68,412", "+2.14%", "up"],
+  ["ETH", "3,824", "+1.68%", "up"],
+  ["US10Y", "4.284", "+2.1bp", "up"],
+  ["BUND10Y", "2.412", "−0.4bp", "down"],
+];
+
+interface TickerProps {
+  items?: readonly TickerItem[];
+}
+
+export function Ticker({ items }: TickerProps = {}) {
+  const data = items && items.length > 0 ? items : TICKER_FALLBACK;
+  const track = [...data, ...data];
   return (
     <div className="ticker">
       <div className="ticker-track">
