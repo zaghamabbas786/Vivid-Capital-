@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo } from "react";
 
 interface BrandMarkProps {
@@ -28,64 +29,45 @@ interface BrandLockupProps {
   compact?: boolean;
 }
 
-export function BrandLockup({ size = 20, onDark = false, compact = false }: BrandLockupProps) {
-  const gray = onDark ? "var(--ground)" : "oklch(52% 0.008 260)";
-  const capGray = onDark ? "oklch(78% 0.010 260)" : "oklch(62% 0.008 260)";
-  const blue = "var(--brand-blue)";
-  if (compact) {
-    const h = size * 1.15;
-    const w = size * 5.6;
-    return (
-      <svg
-        width={w}
-        height={h}
-        viewBox="0 0 260 60"
-        fill="none"
-        style={{ display: "block" }}
-        aria-label="Vivid Capital"
-      >
-        <path d="M4 6 L28 56 L52 6 L42 6 L28 34 L14 6 Z" fill={gray} />
-        <rect x="60" y="6" width="10" height="50" fill={gray} />
-        <path d="M82 0 L120 60 L158 0 L138 0 L120 26 L102 0 Z" fill={blue} />
-        <rect x="168" y="6" width="10" height="50" fill={gray} />
-        <path
-          d="M188 6 L220 6 Q246 6 246 31 Q246 56 220 56 L188 56 Z M198 14 L198 48 L218 48 Q236 48 236 31 Q236 14 218 14 Z"
-          fill={gray}
-        />
-      </svg>
-    );
-  }
-  const h = size * 1.6;
-  const w = size * 5.6;
+// Aspect ratio of the visible mark+wordmark inside the supplied square PNG.
+// The asset is 1024x1024 with significant top/bottom whitespace; this ratio
+// matches the actual content area so `object-fit: cover` clips the padding
+// and renders a tight lockup.
+const LOCKUP_ASPECT = 2.6;
+
+export function BrandLockup({
+  size = 20,
+  onDark = false,
+  compact = false,
+}: BrandLockupProps) {
+  const height = compact ? size * 1.4 : size * 1.8;
+  const width = height * LOCKUP_ASPECT;
   return (
-    <svg
-      width={w}
-      height={h}
-      viewBox="0 0 260 80"
-      fill="none"
-      style={{ display: "block" }}
+    <span
       aria-label="Vivid Capital"
+      style={{
+        position: "relative",
+        display: "inline-block",
+        height,
+        width,
+        overflow: "hidden",
+        // Light surfaces: `multiply` collapses the near-white PNG backplate
+        // into the off-white page. Dark surfaces: invert + hue-rotate flips
+        // greys to whites while keeping the blue V recognisably blue.
+        ...(onDark
+          ? { filter: "invert(1) hue-rotate(180deg)" }
+          : { mixBlendMode: "multiply" as const }),
+      }}
     >
-      <path d="M4 6 L28 56 L52 6 L42 6 L28 34 L14 6 Z" fill={gray} />
-      <rect x="60" y="6" width="10" height="50" fill={gray} />
-      <path d="M82 0 L120 60 L158 0 L138 0 L120 26 L102 0 Z" fill={blue} />
-      <rect x="168" y="6" width="10" height="50" fill={gray} />
-      <path
-        d="M188 6 L220 6 Q246 6 246 31 Q246 56 220 56 L188 56 Z M198 14 L198 48 L218 48 Q236 48 236 31 Q236 14 218 14 Z"
-        fill={gray}
+      <Image
+        src="/brand/vivid-capital.png"
+        alt="Vivid Capital"
+        fill
+        sizes={`${Math.ceil(width)}px`}
+        priority={compact}
+        style={{ objectFit: "cover", objectPosition: "center" }}
       />
-      <text
-        x="48"
-        y="76"
-        fontSize="12"
-        letterSpacing="6"
-        fontWeight="500"
-        fill={capGray}
-        style={{ fontFamily: "var(--sans)" }}
-      >
-        C A P I T A L
-      </text>
-    </svg>
+    </span>
   );
 }
 
