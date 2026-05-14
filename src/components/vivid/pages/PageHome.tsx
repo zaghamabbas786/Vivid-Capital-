@@ -1,6 +1,6 @@
 "use client";
 
-import { INSIGHTS } from "@/lib/site-data";
+import Image from "next/image";
 
 import { useSiteNavigate } from "@/components/vivid/navigation-context";
 import { Ticker, type TickerItem } from "@/components/vivid/primitives";
@@ -189,7 +189,13 @@ export function PageHome({ tickerItems }: PageHomeProps = {}) {
           <div className="grid-2">
             <div className="reveal">
               <div className="split-skyline" style={{ aspectRatio: "4/5" }}>
-                <SkylineSplitArt />
+                <Image
+                  src="/skyline.jpg"
+                  alt="Dubai and Canary Wharf"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 820px) 100vw, 50vw"
+                />
               </div>
             </div>
             <div className="reveal d1" style={{ display: "flex", flexDirection: "column", gap: 32 }}>
@@ -214,47 +220,30 @@ export function PageHome({ tickerItems }: PageHomeProps = {}) {
 
       <section className="section">
         <div className="container">
-          <div className="section-label reveal" style={{ justifyContent: "space-between" }}>
-            <span style={{ display: "flex", gap: 16, alignItems: "baseline" }}>
-              <span className="num-prefix">04 ——</span>
-              <span className="lbl">Latest Insights</span>
-            </span>
-            <a
-              onClick={() => { navigate("insights"); }}
-              className="scroll-hint"
-              style={{ cursor: "pointer" }}
-              role="link"
-              tabIndex={0}
-              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate("insights"); }}
-            >
-              All insights →
-            </a>
+          <div className="section-label reveal">
+            <span className="num-prefix">04 ——</span>
+            <span className="lbl">Insights</span>
           </div>
-          <div className="insight-grid">
-            {INSIGHTS.slice(0, 3).map((it, i) => (
-              <div
-                key={it.id}
-                className="insight reveal"
-                style={{ transitionDelay: `${i * 80}ms` }}
-                onClick={() => { navigate("insights"); }}
-                role="button"
+          <div className="grid-asym">
+            <h2 className="display-md reveal d1" style={{ margin: 0 }}>
+              Research and{" "}
+              <em style={{ color: "var(--accent-ink)", fontStyle: "italic" }}>
+                commentary, coming soon.
+              </em>
+            </h2>
+            <div className="body reveal d2" style={{ maxWidth: "58ch" }}>
+              Our first research notes and quarterly letter are in preparation. To be added
+              to the distribution list, please get in touch via the{" "}
+              <a
+                onClick={() => { navigate("contact"); }}
+                style={{ cursor: "pointer", borderBottom: "1px solid var(--ink-3)" }}
+                role="link"
                 tabIndex={0}
-                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate("insights"); }}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate("contact"); }}
               >
-                <div className="meta">
-                  <span className="tag">{it.kind}</span>
-                  <span className="tag">{it.date}</span>
-                </div>
-                <h4 className="headline">{it.title}</h4>
-                <div className="body-sm">{it.dek}</div>
-                <div className="foot">
-                  <span>{it.author}</span>
-                  <span>
-                    Read <span className="arr">→</span>
-                  </span>
-                </div>
-              </div>
-            ))}
+                contact page
+              </a>.
+            </div>
           </div>
         </div>
       </section>
@@ -262,99 +251,3 @@ export function PageHome({ tickerItems }: PageHomeProps = {}) {
   );
 }
 
-function SkylineSplitArt() {
-  return (
-    <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Dubai and Canary Wharf">
-      <defs>
-        <clipPath id="clip-dubai">
-          <polygon points="0,0 400,0 0,500" />
-        </clipPath>
-        <clipPath id="clip-london">
-          <polygon points="400,0 400,500 0,500" />
-        </clipPath>
-        <linearGradient id="skyA" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="oklch(94% 0.012 75)" />
-          <stop offset="100%" stopColor="oklch(88% 0.018 75)" />
-        </linearGradient>
-        <linearGradient id="skyB" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="oklch(88% 0.010 230)" />
-          <stop offset="100%" stopColor="oklch(80% 0.015 230)" />
-        </linearGradient>
-      </defs>
-
-      <g clipPath="url(#clip-dubai)">
-        <rect x="0" y="0" width="400" height="500" fill="url(#skyA)" />
-        <circle cx="110" cy="160" r="60" fill="oklch(92% 0.04 70)" opacity="0.6" />
-        <g fill="oklch(60% 0.02 60)" opacity="0.35">
-          <rect x="10" y="300" width="18" height="180" />
-          <rect x="32" y="280" width="14" height="200" />
-          <rect x="50" y="320" width="22" height="160" />
-          <rect x="78" y="260" width="12" height="220" />
-          <rect x="96" y="290" width="20" height="190" />
-          <rect x="122" y="310" width="14" height="170" />
-        </g>
-        <g fill="oklch(38% 0.012 50)">
-          <polygon points="150,480 150,180 162,50 168,30 172,30 178,50 190,180 190,480" />
-          <rect x="145" y="200" width="50" height="280" />
-          <polygon points="140,480 140,260 145,240 195,240 200,260 200,480" />
-          <polygon points="130,480 130,330 145,310 195,310 210,330 210,480" />
-        </g>
-        <g fill="oklch(42% 0.015 50)">
-          <polygon points="215,480 220,220 232,208 244,220 240,480" />
-          <rect x="250" y="280" width="28" height="200" />
-          <polygon points="280,480 285,250 300,240 315,250 310,480" />
-        </g>
-        <rect x="0" y="460" width="400" height="40" fill="oklch(55% 0.020 55)" opacity="0.25" />
-      </g>
-
-      <g clipPath="url(#clip-london)">
-        <rect x="0" y="0" width="400" height="500" fill="url(#skyB)" />
-        <rect x="0" y="430" width="400" height="70" fill="oklch(75% 0.022 230)" opacity="0.35" />
-        <g fill="oklch(36% 0.012 240)">
-          <rect x="205" y="175" width="46" height="285" />
-          <polygon points="205,175 228,148 251,175" />
-          <rect x="158" y="230" width="42" height="230" />
-          <rect x="255" y="215" width="38" height="245" />
-          <rect x="297" y="245" width="34" height="215" />
-          <rect x="120" y="270" width="32" height="190" />
-          <rect x="335" y="260" width="30" height="200" />
-          <rect x="365" y="285" width="28" height="175" />
-          <rect x="85" y="295" width="28" height="165" />
-        </g>
-        <g fill="oklch(92% 0.018 85)" opacity="0.55">
-          {Array.from({ length: 28 }, (_, row) =>
-            Array.from({ length: 6 }, (_, col) => (
-              <rect key={`wf-${row}-${col}`} x={209 + col * 7} y={188 + row * 10} width="2" height="4" />
-            )),
-          ).flat()}
-          {Array.from({ length: 22 }, (_, row) =>
-            Array.from({ length: 5 }, (_, col) => (
-              <rect key={`wn-${row}-${col}`} x={162 + col * 7} y={240 + row * 10} width="2" height="4" />
-            )),
-          ).flat()}
-          {Array.from({ length: 23 }, (_, row) =>
-            Array.from({ length: 4 }, (_, col) => (
-              <rect key={`we-${row}-${col}`} x={259 + col * 7} y={225 + row * 10} width="2" height="4" />
-            )),
-          ).flat()}
-        </g>
-        <g stroke="oklch(65% 0.025 230)" strokeWidth="0.6" opacity="0.5">
-          <line x1="30" y1="470" x2="120" y2="470" />
-          <line x1="180" y1="478" x2="260" y2="478" />
-          <line x1="310" y1="468" x2="380" y2="468" />
-          <line x1="60" y1="486" x2="170" y2="486" />
-          <line x1="240" y1="490" x2="340" y2="490" />
-        </g>
-      </g>
-
-      <line x1="0" y1="500" x2="400" y2="0" stroke="oklch(28% 0.01 50)" strokeWidth="1" opacity="0.8" />
-
-      <text x="22" y="30" fill="oklch(30% 0.01 50)" fontFamily="ui-monospace, monospace" fontSize="9" letterSpacing="1.5">
-        DUBAI
-      </text>
-      <text x="378" y="488" textAnchor="end" fill="oklch(30% 0.01 230)" fontFamily="ui-monospace, monospace" fontSize="9" letterSpacing="1.5">
-        CANARY WHARF
-      </text>
-    </svg>
-  );
-}

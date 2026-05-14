@@ -1,4 +1,4 @@
-export type NavSegment = "home" | "firm" | "strategy" | "insights" | "careers" | "contact";
+export type NavSegment = "home" | "firm" | "strategy" | "insights" | "careers" | "contact" | "terms" | "privacy";
 
 export const NAV_HREF: Record<NavSegment, string> = {
   home: "/",
@@ -7,6 +7,8 @@ export const NAV_HREF: Record<NavSegment, string> = {
   insights: "/insights",
   careers: "/careers",
   contact: "/contact",
+  terms: "/terms",
+  privacy: "/privacy",
 } as const;
 
 export const PRIMARY_NAV: readonly { segment: Exclude<NavSegment, "home">; label: string }[] = [
@@ -22,7 +24,7 @@ export function segmentFromPathname(pathname: string): NavSegment {
     return "home";
   }
   const head = pathname.replace(/^\//, "").split("/")[0] ?? "";
-  if (head === "firm" || head === "strategy" || head === "insights" || head === "careers" || head === "contact") {
+  if (head === "firm" || head === "strategy" || head === "insights" || head === "careers" || head === "contact" || head === "terms" || head === "privacy") {
     return head;
   }
   return "home";
