@@ -21,12 +21,9 @@ export function PageHome({ tickerItems }: PageHomeProps = {}) {
           <div className="hero-head">
             <div>
               <h1 className="hero-title reveal d1" style={{ marginTop: 32 }}>
-                Systematic
-                <br />
-                <em>macro</em>
-                <br />
-                for the modern
-                <br />
+                Systematic<br />
+                <em>macro</em><br />
+                for the modern<br />
                 liquid universe.
               </h1>
             </div>
