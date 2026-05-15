@@ -6,26 +6,26 @@ const STRATEGIES = [
   {
     code: "VC-01",
     title: "Systematic Macro",
-    desc: "Our flagship multi-strategy vehicle. Trend, carry and value signals across rates, FX and equity indices, combined through a volatility-targeted risk allocator that explicitly respects regime change.",
-    markets: ["G10 Rates", "FX Majors + EM", "Equity Indices", "Cross-Asset Carry"],
+    desc: "Trend-following and regime-adaptive models across FX, equity indices, and commodities, deployed through a volatility-targeted risk framework that adjusts exposure based on prevailing market conditions.",
+    markets: ["FX", "Equity Idx", "Commodities", "Trend"],
   },
   {
     code: "VC-02",
     title: "FX Systematic",
-    desc: "A dedicated currency programme across G10 and liquid emerging markets, combining trend-following and carry signals within a unified risk framework. Implementation emphasises execution quality, funding-cost awareness and cross-pair correlation control.",
-    markets: ["G10 Currencies", "EM Currencies", "Trend", "Carry"],
+    desc: "A dedicated currency programme across major G10 pairs, combining trend-following and momentum strategies with dynamic position sizing and volatility-adjusted risk controls.",
+    markets: ["G10 FX", "Trend", "Momentum", "Vol-Adjusted"],
   },
   {
     code: "VC-03",
     title: "Digital Assets",
-    desc: "Market-neutral basis trades and selective directional models across liquid digital asset venues. All capital custodied through institutional infrastructure with multi-venue execution routing.",
-    markets: ["BTC / ETH Spot", "Perpetual Basis", "Funding Arbitrage", "Liquid Alt Beta"],
+    desc: "Directional momentum and breakout models across BTC, ETH, and select liquid digital assets, executed algorithmically within a disciplined risk management framework.",
+    markets: ["BTC", "ETH", "Momentum", "Breakout"],
   },
   {
     code: "VC-04",
     title: "Systematic Gold",
-    desc: "A dedicated systematic programme in gold, combining medium-term momentum signals with disciplined breakout strategies across the futures curve. Designed as a liquid, risk-managed expression of trend and regime dynamics in the precious metals complex.",
-    markets: ["Gold Futures", "Spot XAU", "Term Structure", "Volatility Overlay"],
+    desc: "A dedicated systematic programme in gold, combining medium-term momentum and breakout strategies with volatility-responsive position sizing and defined drawdown controls.",
+    markets: ["Gold", "Momentum", "Breakout", "Vol-Targeted"],
   },
 ] as const;
 

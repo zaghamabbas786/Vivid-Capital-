@@ -125,26 +125,26 @@ export function PageHome({ tickerItems }: PageHomeProps = {}) {
               {
                 idx: "VC-01",
                 title: "Systematic Macro",
-                desc: "Trend, carry and value signals across global rates, FX and equity indices, blended through a volatility-targeted risk allocator.",
-                markets: ["Rates", "FX", "Equity idx", "Carry"],
+                desc: "Trend-following and regime-adaptive models across FX, equity indices, and commodities, deployed through a volatility-targeted risk framework that adjusts exposure based on prevailing market conditions.",
+                markets: ["FX", "Equity Idx", "Commodities", "Trend"],
               },
               {
                 idx: "VC-02",
                 title: "FX Systematic",
-                desc: "A dedicated currency programme across G10 and liquid emerging markets, combining trend-following and carry signals within a unified risk framework.",
-                markets: ["G10 FX", "EM FX", "Trend", "Carry"],
+                desc: "A dedicated currency programme across major G10 pairs, combining trend-following and momentum strategies with dynamic position sizing and volatility-adjusted risk controls.",
+                markets: ["G10 FX", "Trend", "Momentum", "Vol-Adjusted"],
               },
               {
                 idx: "VC-03",
                 title: "Digital Assets",
-                desc: "Market-neutral and directional models on liquid crypto venues, benchmarked against a bespoke execution and custody framework.",
-                markets: ["BTC", "ETH", "Perp basis", "Alt beta"],
+                desc: "Directional momentum and breakout models across BTC, ETH, and select liquid digital assets, executed algorithmically within a disciplined risk management framework.",
+                markets: ["BTC", "ETH", "Momentum", "Breakout"],
               },
               {
                 idx: "VC-04",
                 title: "Systematic Gold",
-                desc: "A dedicated systematic programme in gold, combining medium-term momentum signals with disciplined breakout strategies across the futures curve.",
-                markets: ["Gold", "Futures", "Momentum", "Breakout"],
+                desc: "A dedicated systematic programme in gold, combining medium-term momentum and breakout strategies with volatility-responsive position sizing and defined drawdown controls.",
+                markets: ["Gold", "Momentum", "Breakout", "Vol-Targeted"],
               },
             ].map((s, i) => (
               <div
