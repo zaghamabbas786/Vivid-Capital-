@@ -66,7 +66,7 @@ const GLOBAL_KEYWORDS = [
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Vivid Capital | Systematic Quantitative Macro Fund — Dubai & London",
+    default: "Vivid Capital",
     template: "%s · Vivid Capital",
   },
   description: OG_DESC,

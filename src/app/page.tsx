@@ -4,7 +4,7 @@ import { PageHome } from "@/components/vivid/pages/PageHome";
 import { getTickerItems } from "@/lib/quotes";
 
 export const metadata: Metadata = {
-  title: "Vivid Capital | Systematic Quantitative Macro Fund — Dubai & London",
+  title: "Vivid Capital",
   description:
     "Vivid Capital is a systematic quantitative macro fund based in Dubai. We run trend-following and model-driven strategies across FX, equity indices, commodities, digital assets and gold — engineered for persistence, not narrative.",
   keywords: [
