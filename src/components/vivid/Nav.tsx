@@ -32,10 +32,10 @@ export function Nav({ onMenu }: NavProps) {
           ))}
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <Link href={NAV_HREF.contact} className="nav-cta">
+          <a href="https://portal.vividcapital.co.uk/" target="_blank" rel="noopener noreferrer" className="nav-cta">
             Client Login
             <span className="arr">→</span>
-          </Link>
+          </a>
           <button type="button" className="menu-btn" onClick={onMenu}>
             Menu <span>+</span>
           </button>
