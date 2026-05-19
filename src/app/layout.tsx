@@ -33,26 +33,39 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500"],
 });
 
+const BASE_URL = "https://www.vividcapital.co.uk";
+const OG_DESC = "Quantitative macro strategies across global FX, commodities, equity indices, and digital asset markets.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "Vivid Capital",
     template: "%s · Vivid Capital",
   },
-  description:
-    "Quantitative macro strategies across global FX, commodities, equity indices, and digital asset markets.",
+  description: OG_DESC,
+  alternates: {
+    canonical: BASE_URL,
+  },
   openGraph: {
     title: "Vivid Capital",
-    description:
-      "Quantitative macro strategies across global FX, commodities, equity indices, and digital asset markets.",
-    url: "https://www.vividcapital.co.uk/",
+    description: OG_DESC,
+    url: BASE_URL,
     siteName: "Vivid Capital",
     type: "website",
+    images: [
+      {
+        url: "/brand/vivid-capital.png",
+        width: 1200,
+        height: 630,
+        alt: "Vivid Capital",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Vivid Capital",
-    description:
-      "Quantitative macro strategies across global FX, commodities, equity indices, and digital asset markets.",
+    description: OG_DESC,
+    images: ["/brand/vivid-capital.png"],
   },
 };
 
@@ -67,6 +80,29 @@ export default function RootLayout({
       className={`${interTight.variable} ${sourceSerif.variable} ${jetbrainsMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Vivid Capital",
+              url: "https://www.vividcapital.co.uk",
+              logo: "https://www.vividcapital.co.uk/brand/vivid-capital.png",
+              description: OG_DESC,
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Dubai",
+                addressCountry: "AE",
+              },
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "investor relations",
+                url: "https://www.vividcapital.co.uk/contact",
+              },
+            }),
+          }}
+        />
         <SiteShell>{children}</SiteShell>
       </body>
     </html>
