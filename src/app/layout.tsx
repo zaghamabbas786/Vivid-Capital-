@@ -34,20 +34,48 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const BASE_URL = "https://www.vividcapital.co.uk";
-const OG_DESC = "Quantitative macro strategies across global FX, commodities, equity indices, and digital asset markets.";
+const OG_DESC = "Vivid Capital is a systematic quantitative macro fund based in Dubai. We run trend-following and model-driven strategies across FX, equity indices, commodities, digital assets and gold.";
+
+const GLOBAL_KEYWORDS = [
+  "Vivid Capital",
+  "quantitative macro fund",
+  "systematic macro trading",
+  "quant fund Dubai",
+  "hedge fund Dubai",
+  "algorithmic trading firm",
+  "systematic trading strategies",
+  "FX systematic trading",
+  "trend following fund",
+  "digital assets fund",
+  "systematic gold trading",
+  "quantitative investment firm",
+  "asset management Dubai",
+  "investment firm UAE",
+  "quant fund London",
+  "alternative investments",
+  "uncorrelated returns",
+  "risk-adjusted returns",
+  "liquid alternatives",
+  "quantitative finance",
+  "systematic FX",
+  "volatility-targeted portfolio",
+  "macro hedge fund",
+  "algorithmic fund management",
+];
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Vivid Capital",
+    default: "Vivid Capital | Systematic Quantitative Macro Fund — Dubai & London",
     template: "%s · Vivid Capital",
   },
   description: OG_DESC,
+  keywords: GLOBAL_KEYWORDS,
   alternates: {
     canonical: BASE_URL,
   },
   openGraph: {
-    title: "Vivid Capital",
+    title: "Vivid Capital | Systematic Quantitative Macro Fund",
     description: OG_DESC,
     url: BASE_URL,
     siteName: "Vivid Capital",
@@ -57,13 +85,13 @@ export const metadata: Metadata = {
         url: "/brand/vivid-capital.png",
         width: 1200,
         height: 630,
-        alt: "Vivid Capital",
+        alt: "Vivid Capital — Systematic Quantitative Macro Fund",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vivid Capital",
+    title: "Vivid Capital | Systematic Quantitative Macro Fund",
     description: OG_DESC,
     images: ["/brand/vivid-capital.png"],
   },
@@ -87,19 +115,42 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Vivid Capital",
+              alternateName: ["Vivid Capital Dubai", "Vivid Capital Fund"],
               url: "https://www.vividcapital.co.uk",
               logo: "https://www.vividcapital.co.uk/brand/vivid-capital.png",
               description: OG_DESC,
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Dubai",
-                addressCountry: "AE",
-              },
+              foundingLocation: "Dubai, UAE",
+              numberOfEmployees: { "@type": "QuantitativeValue", minValue: 1 },
+              knowsAbout: [
+                "Quantitative macro trading",
+                "Systematic FX strategies",
+                "Trend following",
+                "Digital asset management",
+                "Systematic gold trading",
+                "Algorithmic portfolio management",
+                "Volatility-targeted risk allocation",
+              ],
+              address: [
+                {
+                  "@type": "PostalAddress",
+                  addressLocality: "Dubai",
+                  addressCountry: "AE",
+                  addressRegion: "Dubai",
+                },
+                {
+                  "@type": "PostalAddress",
+                  addressLocality: "London",
+                  addressCountry: "GB",
+                },
+              ],
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "investor relations",
                 url: "https://www.vividcapital.co.uk/contact",
               },
+              sameAs: [
+                "https://www.vividcapital.co.uk",
+              ],
             }),
           }}
         />
