@@ -4,7 +4,7 @@ import { PageHome } from "@/components/vivid/pages/PageHome";
 import { getTickerItems } from "@/lib/quotes";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Vivid Capital",
 };
 
 export const revalidate = 60;

@@ -34,11 +34,25 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Vivid Capital Portal",
-    template: "%s · Vivid Capital Portal",
+    default: "Vivid Capital",
+    template: "%s · Vivid Capital",
   },
   description:
     "Quantitative macro strategies across global FX, commodities, equity indices, and digital asset markets.",
+  openGraph: {
+    title: "Vivid Capital",
+    description:
+      "Quantitative macro strategies across global FX, commodities, equity indices, and digital asset markets.",
+    url: "https://www.vividcapital.co.uk/",
+    siteName: "Vivid Capital",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Vivid Capital",
+    description:
+      "Quantitative macro strategies across global FX, commodities, equity indices, and digital asset markets.",
+  },
 };
 
 export default function RootLayout({
